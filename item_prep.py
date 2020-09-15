@@ -6,8 +6,13 @@ import webbrowser
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
+import datetime
 
 # 入力（共通部分）
+def itmpage():
+   sleep(1)
+   driver.get("https://www.mercari.com/jp/sell/")
+   sleep(1)
 def sct():
    select = Select(cateElement)
    select.select_by_index(indexNum)
@@ -56,12 +61,16 @@ def mc():
    indexNum= 1
    select = Select(cateElement)
    select.select_by_index(indexNum)
-def itm1(): #ダイソン掃除機 タイヤ4個+テフロンテープ+トルクスドライバー３本セット
+def exh():
+   sl = driver.find_element_by_css_selector("button[type=submit")
+   sleep(10)
+   sl.click()
+def itm1(): #ダイソン掃除機 タイヤ4個+テフロンテープ+トルクスドライバー3本セット
    # 画像をアップロード
    driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/torx/torxset.jpeg \n /Users/masa/Pictures/dyson/tire4.jpeg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/dyson/moeterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpeg")
    # 商品名
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
-   inputElement1.send_keys("ダイソン掃除機 タイヤ４個＋テフロンテープ＋トルクスドライバー３本セット")
+   inputElement1.send_keys("ダイソン掃除機 タイヤ4個+テフロンテープ+トルクスドライバー3本セット")
    # 商品の説明
    inputElement1 = driver.find_elements_by_class_name("style_body__1OP1S")[2].find_element_by_css_selector("textarea")
    inputElement1.send_keys("\
@@ -80,7 +89,7 @@ def itm2(): #ダイソン掃除機 タイヤ4個+テフロンテープ+シャフ
    driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/shaftset.jpeg \n /Users/masa/Pictures/dyson/tire4.jpeg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/dyson/shaft.jpeg \n /Users/masa/Pictures/dyson/moeterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpeg")
    # 商品名
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
-   inputElement1.send_keys("ダイソン掃除機 タイヤ４個＋テフロンテープ＋シャフト４本セット")
+   inputElement1.send_keys("ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4本セット")
    # 商品の説明
    inputElement1 = driver.find_elements_by_class_name("style_body__1OP1S")[2].find_element_by_css_selector("textarea")
    inputElement1.send_keys("\
@@ -99,7 +108,7 @@ def itm3(): #ダイソン掃除機 タイヤ4個+テフロンテープ+シャフ
    driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/4set.jpeg \n /Users/masa/Pictures/dyson/tire4.jpeg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/dyson/shaft.jpeg \n /Users/masa/Pictures/dyson/moeterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpeg")
    # 商品名
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
-   inputElement1.send_keys("ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト４本+トルクスドライバー3本")
+   inputElement1.send_keys("ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4本+トルクスドライバー3本")
    # 商品の説明
    inputElement1 = driver.find_elements_by_class_name("style_body__1OP1S")[2].find_element_by_css_selector("textarea")
    inputElement1.send_keys("\
@@ -207,7 +216,8 @@ options = webdriver.ChromeOptions()
 options.add_argument(
    '--user-data-dir={chrom_dir_path}'.format(chrom_dir_path = '/Users/masa/Library/Application Support/Google/Chrome/Profile 3'))
 driver = webdriver.Chrome(options=options)
-
+print(1)
+print(datetime.datetime.now())
 # メルカリのページにアクセス
 sleep(1)
 driver.get("https://www.mercari.com/jp/mypage/listings/listing/")
@@ -217,10 +227,9 @@ itmlists = driver.find_elements_by_class_name("mypage-item-text")
 lists = []
 for itmlist in itmlists:
    lists.append(itmlist.text)
-if not "ダイソン掃除機 タイヤ4個+テフロンテープ+トルクスドライバー３本セット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+if not "ダイソン掃除機 タイヤ4個+テフロンテープ+トルクスドライバー3本セット" in lists:
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm1()
    # カテゴリ & ブランド
@@ -228,13 +237,10 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープ+トルクス�
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4本セット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm2()
    # カテゴリ & ブランド
@@ -242,13 +248,10 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4�
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4本+トルクスドライバー3本" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm3()
    # カテゴリ & ブランド
@@ -256,13 +259,12 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4�
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
+print(2)
+print(datetime.datetime.now())
 if not "ダイソン掃除機 タイヤ4個+テフロンテープセット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm4()
    # カテゴリ & ブランド
@@ -270,13 +272,10 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープセット" in l
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ4個" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm5()
    # カテゴリ & ブランド
@@ -284,13 +283,10 @@ if not "ダイソン掃除機 タイヤ4個" in lists:
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm6()
    # カテゴリ & ブランド
@@ -298,13 +294,10 @@ if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in l
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ2個" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm7()
    # カテゴリ & ブランド
@@ -312,13 +305,12 @@ if not "ダイソン掃除機 タイヤ2個" in lists:
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
+print(3)
+print(datetime.datetime.now())
 if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm8()
    # カテゴリ & ブランド
@@ -326,10 +318,11 @@ if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 #全てのウインドウを閉じる
+sleep(4)
+print(4)
+print(datetime.datetime.now())
 driver.quit()
 
 # Open web (account 2)
@@ -339,6 +332,8 @@ options.add_argument(
 driver = webdriver.Chrome(options=options)
 
 # メルカリのページにアクセス
+print(5)
+print(datetime.datetime.now())
 sleep(1)
 driver.get("https://www.mercari.com/jp/mypage/listings/listing/")
 sleep(1)
@@ -347,10 +342,9 @@ itmlists = driver.find_elements_by_class_name("mypage-item-text")
 lists = []
 for itmlist in itmlists:
    lists.append(itmlist.text)
-if not "ダイソン掃除機 タイヤ4個+テフロンテープ+トルクスドライバー３本セット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+if not "ダイソン掃除機 タイヤ4個+テフロンテープ+トルクスドライバー3本セット" in lists:
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm1()
    # カテゴリ & ブランド
@@ -358,13 +352,12 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープ+トルクス�
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
+print(6)
+print(datetime.datetime.now())
 if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4本セット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm2()
    # カテゴリ & ブランド
@@ -372,13 +365,10 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4�
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4本+トルクスドライバー3本" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm3()
    # カテゴリ & ブランド
@@ -386,13 +376,10 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープ+シャフト4�
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ4個+テフロンテープセット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm4()
    # カテゴリ & ブランド
@@ -400,13 +387,12 @@ if not "ダイソン掃除機 タイヤ4個+テフロンテープセット" in l
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
+print(7)
+print(datetime.datetime.now())
 if not "ダイソン掃除機 タイヤ4個" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm5()
    # カテゴリ & ブランド
@@ -414,13 +400,10 @@ if not "ダイソン掃除機 タイヤ4個" in lists:
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm6()
    # カテゴリ & ブランド
@@ -428,13 +411,10 @@ if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in l
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 if not "ダイソン掃除機 タイヤ2個" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm7()
    # カテゴリ & ブランド
@@ -442,13 +422,12 @@ if not "ダイソン掃除機 タイヤ2個" in lists:
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
+print(8)
+print(datetime.datetime.now())
 if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
-   sleep(1)
-   driver.get("https://www.mercari.com/jp/sell/")
-   sleep(1)
+   # 出品ページへ
+   itmpage()
    # 画像をアップロード & 商品名 & 商品説明 & 販売価格
    itm8()
    # カテゴリ & ブランド
@@ -456,8 +435,9 @@ if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
    # 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数
    mc()
    # 出品する
-   sl = driver.find_element_by_css_selector("button[type=submit")
-   sleep(1)
-   #sl.click()
+   exh()
 #全てのウインドウを閉じる
+print(9)
+print(datetime.datetime.now())
+sleep(3)
 driver.quit()
