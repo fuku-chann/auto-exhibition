@@ -1,3 +1,25 @@
+import gspread
+import json
+
+#ServiceAccountCredentials：Googleの各サービスへアクセスできるservice変数を生成します。
+from oauth2client.service_account import ServiceAccountCredentials 
+
+#2つのAPIを記述しないとリフレッシュトークンを3600秒毎に発行し続けなければならない
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+#認証情報設定
+#ダウンロードしたjsonファイル名をクレデンシャル変数に設定（秘密鍵、Pythonファイルから読み込みしやすい位置に置く）
+credentials = ServiceAccountCredentials.from_json_keyfile_name('/Users/masa/dys-mercari/auto-exhibition/mercari-284420-8a48bc1a3e9b.json', scope)
+
+#OAuth2の資格情報を使用してGoogle APIにログインします。
+gc = gspread.authorize(credentials)
+
+#共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。
+SPREADSHEET_KEY = '1EPa-1zsfxXissFWV3BigpHsJCyBuiQHnvfucSWmv1FE'
+
+#共有設定したスプレッドシートのシート1を開く
+worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from time import sleep
@@ -137,6 +159,10 @@ def exh():
    driver.get("https://www.mercari.com/jp/sell/")
    sleep(1)
 
+dt_now = datetime.datetime.now()
+m = dt_now.strftime('%m/%d')
+print(m)
+
 # Open web (account 1)
 options = webdriver.ChromeOptions()
 options.add_argument(
@@ -147,50 +173,84 @@ print(1,datetime.datetime.now())
 sleep(1)
 driver.get("https://www.mercari.com/jp/mypage/listings/listing/")
 sleep(1)
-print(1-1,datetime.datetime.now())
+
+time = datetime.datetime.now()
+
+for i in range(5,13):
+   worksheet.update_cell(i, 4, str(time))
+   worksheet.update_cell(i, 10, str(time))
+   worksheet.update_cell(i, 16, str(time))
+   i += 1
+
+dictm = {}
+urlitems = driver.find_elements_by_class_name("mypage-item-link")
+for urlitem in urlitems:
+   url = urlitem.get_attribute("href")
+   item = urlitem.find_element_by_class_name("mypage-item-text")
+   dictm[item.text]=url
+
+for i in range(5,13):
+   if worksheet.cell(i,9).value < worksheet.cell(i,11).value:
+      del_item = worksheet.cell(i, 8).value
+      sleep(1)
+      driver.get(dictm[del_item])
+      sleep(5)
+      del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
+      del_button1.click()
+      sleep(5)
+      del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
+      del_button3.click()
+
 # 出品中の商品リストを作成
 itmlists = driver.find_elements_by_class_name("mypage-item-text")
 lists = []
-print(1-2,datetime.datetime.now())
 for itmlist in itmlists:
    lists.append(itmlist.text)
+
 itmpage()
-print(1-3,datetime.datetime.now())
 # 1.画像をアップロード & 商品名 & 販売価格, 2.カテゴリ & ブランド & 商品説明, 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数, 3.出品する
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+トルクスドライバー3本セット" in lists:
    itm1()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(5, 9, str(time))
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本セット" in lists:
    itm2()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(6, 9, str(time))
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本+トルクスドライバー3本" in lists:
    itm3()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(7, 9, str(time))
 print(2,datetime.datetime.now())
 if not "ダイソン掃除機 タイヤ5個+テフロンテープセット" in lists:
    itm4()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(8, 9, str(time))
 if not "ダイソン掃除機 タイヤ5個" in lists:
    itm5()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(9, 9, str(time))
 if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in lists:
    itm6()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(10, 9, str(time))
 if not "ダイソン掃除機 タイヤ2個" in lists:
    itm7()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(11, 9, str(time))
 print(3,datetime.datetime.now())
 if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
    itm8()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(12, 9, str(time))
 # ラクマページにアクセス
 def rexp1():
    rinputElement3 = driver.find_elements_by_class_name("form-group")[2].find_element_by_css_selector("textarea")
@@ -250,6 +310,7 @@ if not "ダイソン掃除機 タイヤ5個+テフロンテープ+トルクス�
    rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
    rinputElement8.send_keys("650")
    rclick()
+   worksheet.update_cell(5, 3, str(time))
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本セット" in rlists:
    driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/shaftset.JPG")
    driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire5.jpg")
@@ -263,6 +324,7 @@ if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4�
    rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
    rinputElement8.send_keys("650")
    rclick()
+   worksheet.update_cell(6, 3, str(time))
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本+トルクスドライバー3本" in rlists:
    driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/4set.JPG")
    driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire5set.JPG")
@@ -276,6 +338,7 @@ if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4�
    rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
    rinputElement8.send_keys("830")
    rclick()
+   worksheet.update_cell(7, 3, str(time))
 if not "ダイソン掃除機 タイヤ5個+テフロンテープセット" in rlists:
    driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/tire5set.jpg")
    driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire5.jpg")
@@ -289,6 +352,7 @@ if not "ダイソン掃除機 タイヤ5個+テフロンテープセット" in r
    rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
    rinputElement8.send_keys("580")
    rclick()
+   worksheet.update_cell(8, 3, str(time))
 if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in rlists:
    driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/tire2set.JPG")
    driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire2.jpeg")
@@ -302,6 +366,7 @@ if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in r
    rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
    rinputElement8.send_keys("380")
    rclick()
+   worksheet.update_cell(10, 3, str(time))
 #全てのウインドウを閉じる
 sleep(4)
 driver.quit()
@@ -312,53 +377,82 @@ options.add_argument(
    '--user-data-dir={chrom_dir_path}'.format(chrom_dir_path = '/Users/masa/Library/Application Support/Google/Chrome/Profile 2'))
 driver = webdriver.Chrome(options=options, executable_path='/usr/local/bin/chromedriver')
 
-# メルカリのページにアクセス
+# メルカリTのページにアクセス
 print(5,datetime.datetime.now())
 sleep(1)
 driver.get("https://www.mercari.com/jp/mypage/listings/listing/")
 sleep(1)
+
+dictm = {}
+urlitems = driver.find_elements_by_class_name("mypage-item-link")
+for urlitem in urlitems:
+   url = urlitem.get_attribute("href")
+   item = urlitem.find_element_by_class_name("mypage-item-text")
+   dictm[item.text]=url
+
+for i in range(5,13):
+   if worksheet.cell(i,15).value < worksheet.cell(i,17).value:
+      del_item = worksheet.cell(i, 14).value
+      sleep(1)
+      driver.get(dictm[del_item])
+      sleep(5)
+      del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
+      del_button1.click()
+      sleep(5)
+      del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
+      del_button3.click()
+
 # 出品中の商品リストを作成
 itmlists = driver.find_elements_by_class_name("mypage-item-text")
 lists = []
 for itmlist in itmlists:
    lists.append(itmlist.text)
+
 itmpage()
 #  1.画像をアップロード & 商品名 & 販売価格, 2.カテゴリ & ブランド & 商品説明, 3. 商品の状態 & 配送料の負担 & 配送の方法 & 発送元の地域 & 発送までの日数, 4.出品する
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+トルクスドライバー3本セット" in lists:
    itm1()
-   com_to_dys(mc)
+   com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(5, 15, str(time))
 print(6,datetime.datetime.now())
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本セット" in lists:
    itm2()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(6, 15, str(time))
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本+トルクスドライバー3本" in lists:
    itm3()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(7, 15, str(time))
 if not "ダイソン掃除機 タイヤ5個+テフロンテープセット" in lists:
    itm4()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(8, 15, str(time))
 print(7,datetime.datetime.now())
 if not "ダイソン掃除機 タイヤ5個" in lists:
    itm5()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(9, 15, str(time))
 if not "ダイソン掃除機 タイヤ2個+テフロンテープセット" in lists:
    itm6()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(10, 15, str(time))
 if not "ダイソン掃除機 タイヤ2個" in lists:
    itm7()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(11, 15, str(time))
 print(8,datetime.datetime.now())
 if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
    itm8()
    com_to_dys(exp1, mc)
    exh()
+   worksheet.update_cell(12, 15, str(time))
 #全てのウインドウを閉じる
 print(9,datetime.datetime.now())
 sleep(3)
