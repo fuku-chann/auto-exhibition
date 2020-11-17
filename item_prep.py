@@ -28,7 +28,7 @@ import webbrowser
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
-import datetime
+from datetime import datetime as dt
 
 # 入力（共通部分）
 def itmpage():
@@ -159,7 +159,7 @@ def exh():
    driver.get("https://www.mercari.com/jp/sell/")
    sleep(1)
 
-dt_now = datetime.datetime.now()
+dt_now = dt.now()
 m = dt_now.strftime('%m/%d')
 print(m)
 
@@ -168,13 +168,13 @@ options = webdriver.ChromeOptions()
 options.add_argument(
    '--user-data-dir={chrom_dir_path}'.format(chrom_dir_path = '/Users/masa/Library/Application Support/Google/Chrome/Profile 3'))
 driver = webdriver.Chrome(options=options, executable_path='/usr/local/bin/chromedriver')
-print(1,datetime.datetime.now())
+print(1,dt.now())
 # メルカリのページにアクセス
 sleep(1)
 driver.get("https://www.mercari.com/jp/mypage/listings/listing/")
 sleep(1)
 
-time = datetime.datetime.now()
+time = dt.now()
 
 for i in range(5,13):
    worksheet.update_cell(i, 4, str(time))
@@ -190,7 +190,7 @@ for urlitem in urlitems:
    dictm[item.text]=url
 
 for i in range(5,13):
-   if worksheet.cell(i,9).value < worksheet.cell(i,11).value:
+   if dt.strptime(worksheet.cell(i,9).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,11).value, '%Y/%m/%d %H:%M:%S'):
       del_item = worksheet.cell(i, 8).value
       sleep(1)
       driver.get(dictm[del_item])
@@ -224,7 +224,7 @@ if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4�
    com_to_dys(exp1, mc)
    exh()
    worksheet.update_cell(7, 9, str(time))
-print(2,datetime.datetime.now())
+print(2,dt.now())
 if not "ダイソン掃除機 タイヤ5個+テフロンテープセット" in lists:
    itm4()
    com_to_dys(exp1, mc)
@@ -245,12 +245,13 @@ if not "ダイソン掃除機 タイヤ2個" in lists:
    com_to_dys(exp1, mc)
    exh()
    worksheet.update_cell(11, 9, str(time))
-print(3,datetime.datetime.now())
+print(3,dt.now())
 if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
    itm8()
    com_to_dys(exp1, mc)
    exh()
    worksheet.update_cell(12, 9, str(time))
+
 # ラクマページにアクセス
 def rexp1():
    rinputElement3 = driver.find_elements_by_class_name("form-group")[2].find_element_by_css_selector("textarea")
@@ -289,7 +290,7 @@ driver.get("https://fril.jp/sell")
 sleep(1)
 ritmlists = driver.find_elements_by_class_name("media-heading")
 sleep(1)
-print(4,datetime.datetime.now())
+print(4,dt.now())
 rlists=[]
 sleep(1)
 for ritmlist in ritmlists:
@@ -378,7 +379,7 @@ options.add_argument(
 driver = webdriver.Chrome(options=options, executable_path='/usr/local/bin/chromedriver')
 
 # メルカリTのページにアクセス
-print(5,datetime.datetime.now())
+print(5,dt.now())
 sleep(1)
 driver.get("https://www.mercari.com/jp/mypage/listings/listing/")
 sleep(1)
@@ -391,7 +392,7 @@ for urlitem in urlitems:
    dictm[item.text]=url
 
 for i in range(5,13):
-   if worksheet.cell(i,15).value < worksheet.cell(i,17).value:
+   if dt.strptime(worksheet.cell(i,15).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,17).value, '%Y/%m/%d %H:%M:%S'):
       del_item = worksheet.cell(i, 14).value
       sleep(1)
       driver.get(dictm[del_item])
@@ -415,7 +416,7 @@ if not "ダイソン掃除機 タイヤ5個+テフロンテープ+トルクス�
    com_to_dys(exp1, mc)
    exh()
    worksheet.update_cell(5, 15, str(time))
-print(6,datetime.datetime.now())
+print(6,dt.now())
 if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本セット" in lists:
    itm2()
    com_to_dys(exp1, mc)
@@ -431,7 +432,7 @@ if not "ダイソン掃除機 タイヤ5個+テフロンテープセット" in l
    com_to_dys(exp1, mc)
    exh()
    worksheet.update_cell(8, 15, str(time))
-print(7,datetime.datetime.now())
+print(7,dt.now())
 if not "ダイソン掃除機 タイヤ5個" in lists:
    itm5()
    com_to_dys(exp1, mc)
@@ -447,13 +448,13 @@ if not "ダイソン掃除機 タイヤ2個" in lists:
    com_to_dys(exp1, mc)
    exh()
    worksheet.update_cell(11, 15, str(time))
-print(8,datetime.datetime.now())
+print(8,dt.now())
 if not "トルクスドライバー3本セット（T10 & T8 & T6）" in lists:
    itm8()
    com_to_dys(exp1, mc)
    exh()
    worksheet.update_cell(12, 15, str(time))
 #全てのウインドウを閉じる
-print(9,datetime.datetime.now())
+print(9,dt.now())
 sleep(3)
 driver.quit()
