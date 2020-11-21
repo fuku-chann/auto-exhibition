@@ -130,7 +130,7 @@ exp0a = "\
    \nタイヤが劣化すると約１年ほどでフローリングや畳が傷つくことがあります。そのため、定期的に交換する必要があります。\
    \n\n【交換方法】\n交換方法などブログで詳しく紹介していますので、必ず購入前にご確認ください。\nブラウザでURLを入力すると検索できます。(URL：fuku-channnel.com)\nブログが検索できたら、サイト内検索で「ダイソン」と入力下さい。\
    \n\n【対象機種】\n実績機種は、DC35, DC48, DC59, DC62, V6です。\nその他の機種でも適合する可能性があります。(その他の機種でタイヤ交換をご検討されている方は次の保証内容をご確認ください。)\
-   \n\n【保証内容】\n対象機種以外で交換をご検討されている場合、下記2点をご対応いただくことで保証が適応されることがあります。(対象機種は保証が適用されます)\n1. コメントにてご利用の機種をご連絡ください。\n2. ヘッドの裏の写真(タイヤ部分がわかる写真)を出品下さい。(価格は9,999,999としてください。)\nこちらで取り付けできると判断した場合のみ、保証が適応されます。保証が適応された場合、万が一取り付けできなかったら返金いたしますので、その旨ご連絡ください。\
+   \n\n【保証内容】\n対象機種以外で交換をご検討されている場合、下記2点をご対応いただくことで保証が適応されることがあります。(対象機種は保証が適用されます)\n1. コメントにてご利用の機種をご連絡ください。\n2. ヘッドの裏の写真(タイヤ部分がわかる写真)を出品下さい。(価格は100,000としてください。)\nこちらで取り付けできると判断した場合のみ、保証が適応されます。保証が適応された場合、万が一取り付けできなかったら返金いたしますので、その旨ご連絡ください。\
    \n\n【交換頻度】\n１年以内の交換をおすすめしています。\n【タイヤのサイズ】\n外径: 10 mm\n内径: 3 mm\n幅: 4.5 mm (予備タイヤは3.5 mm)\nシャフトにシールを巻くことを前提にしています。詳しくは上記ブログ（タイヤの取り付け方）をご覧下さい。\
    \n\n【現状のメーカー修理】\nメーカーで修理依頼すると、購入から2年以上経過すると最低5000円の工賃が発生します。\
    \n\n【最後に】\nタイヤは簡単に交換できるので、DIYで行うことをおすすめしています。(機種によって右後輪の取り外しが困難な場合があります)\nメーカーから部品だけの購入が不可と言われたため、自分で作成したものを出品しています。\n最近、ご購入者様からお褒めの言葉を多く頂いております。モチベーションの向上に繋がりますので、評価の方にもコメントいただけたら幸いです。"
@@ -183,23 +183,28 @@ for i in range(5,13):
    i += 1
 
 dictm = {}
+dictcomm = {}
 urlitems = driver.find_elements_by_class_name("mypage-item-link")
 for urlitem in urlitems:
    url = urlitem.get_attribute("href")
    item = urlitem.find_element_by_class_name("mypage-item-text")
+   com = urlitem.find_elements_by_class_name("listing-item-count")[1]
    dictm[item.text]=url
+   dictcomm[item.text]=com.text
 
 for i in range(5,13):
    if dt.strptime(worksheet.cell(i,9).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,11).value, '%Y/%m/%d %H:%M:%S'):
       del_item = worksheet.cell(i, 8).value
       sleep(1)
-      driver.get(dictm[del_item])
-      sleep(5)
-      del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
-      del_button1.click()
-      sleep(5)
-      del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
-      del_button3.click()
+      if del_item in dictm:
+         if dictcomm[del_item] == "0":
+            driver.get(dictm[del_item])
+            sleep(5)
+            del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
+            del_button1.click()
+            sleep(5)
+            del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
+            del_button3.click()
 
 # 出品中の商品リストを作成
 itmlists = driver.find_elements_by_class_name("mypage-item-text")
@@ -385,23 +390,28 @@ driver.get("https://www.mercari.com/jp/mypage/listings/listing/")
 sleep(1)
 
 dictm = {}
+dictcomm = {}
 urlitems = driver.find_elements_by_class_name("mypage-item-link")
 for urlitem in urlitems:
    url = urlitem.get_attribute("href")
    item = urlitem.find_element_by_class_name("mypage-item-text")
+   com = urlitem.find_elements_by_class_name("listing-item-count")[1]
    dictm[item.text]=url
+   dictcomm[item.text]=com.text
 
 for i in range(5,13):
    if dt.strptime(worksheet.cell(i,15).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,17).value, '%Y/%m/%d %H:%M:%S'):
       del_item = worksheet.cell(i, 14).value
       sleep(1)
-      driver.get(dictm[del_item])
-      sleep(5)
-      del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
-      del_button1.click()
-      sleep(5)
-      del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
-      del_button3.click()
+      if del_item in dictm:
+         if dictcomm[del_item] == "0":
+            driver.get(dictm[del_item])
+            sleep(5)
+            del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
+            del_button1.click()
+            sleep(5)
+            del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
+            del_button3.click()
 
 # 出品中の商品リストを作成
 itmlists = driver.find_elements_by_class_name("mypage-item-text")
