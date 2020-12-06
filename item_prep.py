@@ -296,23 +296,18 @@ sleep(5)
 
 for i in range(5,13):
    if dt.strptime(worksheet.cell(i,3).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,5).value, '%Y/%m/%d %H:%M:%S'): #出品してから１日以上経過している場合、trueになります。
-      sleep(5)
       del_item = worksheet.cell(i, 2).value #該当のサンプル名を代入
-      sleep(3)
       urlitems = driver.find_elements_by_class_name("information-pane")[0].find_elements_by_class_name("media") #親要素を取得
-      sleep(5)
       for urlitem in urlitems:
          itemr = urlitem.find_element_by_class_name("media-heading") #商品名を取得
          comr = urlitem.find_elements_by_class_name("item-action-count")[1] #コメントの数を取得
-         sleep(5) 
          if del_item == itemr.text and comr.text == "0":
-            sleep(5) 
             urlr = urlitem.find_elements_by_class_name("btn.btn-default")[1] #削除ボタンを取得
-            sleep(5)
+            sleep(3)
             urlr.click()
-            sleep(5)
+            sleep(3)
             Alert(driver).accept() #削除しますか？のはいをクリックして削除
-            sleep(5)
+            sleep(3)
             break
 sleep(5)
 
