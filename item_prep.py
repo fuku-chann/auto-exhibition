@@ -29,6 +29,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
 from datetime import datetime as dt
+from selenium.webdriver.common.alert import Alert
 
 # 入力（共通部分）
 def itmpage():
@@ -196,15 +197,14 @@ for i in range(5,13):
    if dt.strptime(worksheet.cell(i,9).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,11).value, '%Y/%m/%d %H:%M:%S'):
       del_item = worksheet.cell(i, 8).value
       sleep(1)
-      if del_item in dictm:
-         if dictcomm[del_item] == "0":
-            driver.get(dictm[del_item])
-            sleep(5)
-            del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
-            del_button1.click()
-            sleep(5)
-            del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
-            del_button3.click()
+      if del_item in dictm and dictcomm[del_item] == "0":
+         driver.get(dictm[del_item])
+         sleep(5)
+         del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
+         del_button1.click()
+         sleep(5)
+         del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
+         del_button3.click()
 
 # 出品中の商品リストを作成
 itmlists = driver.find_elements_by_class_name("mypage-item-text")
@@ -290,9 +290,33 @@ def rclick():
    sleep(5)
    driver.get("https://fril.jp/item/new")
    sleep(1)
-sleep(1)
+sleep(3)
 driver.get("https://fril.jp/sell")
-sleep(1)
+sleep(5)
+
+for i in range(5,13):
+   if dt.strptime(worksheet.cell(i,3).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,5).value, '%Y/%m/%d %H:%M:%S'): #出品してから１日以上経過している場合、trueになります。
+      sleep(5)
+      del_item = worksheet.cell(i, 2).value #該当のサンプル名を代入
+      sleep(3)
+      urlitems = driver.find_elements_by_class_name("information-pane")[0].find_elements_by_class_name("media") #親要素を取得
+      sleep(5)
+      for urlitem in urlitems:
+         itemr = urlitem.find_element_by_class_name("media-heading") #商品名を取得
+         comr = urlitem.find_elements_by_class_name("item-action-count")[1] #コメントの数を取得
+         sleep(5) 
+         if del_item == itemr.text and comr.text == "0":
+            sleep(5) 
+            urlr = urlitem.find_elements_by_class_name("btn.btn-default")[1] #削除ボタンを取得
+            sleep(5)
+            urlr.click()
+            sleep(5)
+            Alert(driver).accept() #削除しますか？のはいをクリックして削除
+            sleep(5)
+            break
+sleep(5)
+
+
 ritmlists = driver.find_elements_by_class_name("media-heading")
 sleep(1)
 print(4,dt.now())
@@ -403,15 +427,14 @@ for i in range(5,13):
    if dt.strptime(worksheet.cell(i,15).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,17).value, '%Y/%m/%d %H:%M:%S'):
       del_item = worksheet.cell(i, 14).value
       sleep(1)
-      if del_item in dictm:
-         if dictcomm[del_item] == "0":
-            driver.get(dictm[del_item])
-            sleep(5)
-            del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
-            del_button1.click()
-            sleep(5)
-            del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
-            del_button3.click()
+      if del_item in dictm and dictcomm[del_item] == "0":
+         driver.get(dictm[del_item])
+         sleep(5)
+         del_button1 = driver.find_element_by_css_selector("button[data-modal='delete-item']")
+         del_button1.click()
+         sleep(5)
+         del_button3 = driver.find_elements_by_class_name("modal-btn.modal-btn-submit")[1]
+         del_button3.click()
 
 # 出品中の商品リストを作成
 itmlists = driver.find_elements_by_class_name("mypage-item-text")
