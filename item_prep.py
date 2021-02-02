@@ -43,27 +43,27 @@ def itmpage():
    sleep(3)
 # itmx: 1.画像をアップロード, 2-3.商品名, 4-5.販売価格
 def itm1():
-   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/torx/torxset.JPG \n /Users/masa/Pictures/dyson/tire5.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
+   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/torx/torxset.JPG \n /Users/masa/Pictures/dyson/tire5.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/torx/torxside.jpg \n /Users/masa/Pictures/torx/torxsize.JPG \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
    inputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープ+トルクスドライバー3本セット")
    inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
-   inputElement3.send_keys("680")
+   inputElement3.send_keys("630")
    global exp1a
    exp1a = "【商品紹介】\n画像の2～4枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤと工具です。"
 def itm2():
-   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/shaftset.JPG \n /Users/masa/Pictures/dyson/tire5.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/dyson/shaft.jpeg \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
+   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/shaftset.JPG \n /Users/masa/Pictures/dyson/tire5.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/dyson/shaft.png \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
    inputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本セット")
    inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
-   inputElement3.send_keys("680")
+   inputElement3.send_keys("630")
    global exp1a
    exp1a = "【商品紹介】\n画像の2～4枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤと部品です。"
 def itm3():
-   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/4set.JPG \n /Users/masa/Pictures/dyson/tire5.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/dyson/shaft.jpeg \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
+   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/4set.JPG \n /Users/masa/Pictures/dyson/tire5.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/torx/torxside.jpg \n /Users/masa/Pictures/torx/torxsize.JPG \n /Users/masa/Pictures/dyson/shaft.png \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
    inputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本+トルクスドライバー3本")
    inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
-   inputElement3.send_keys("880")
+   inputElement3.send_keys("730")
    global exp1a
    exp1a = "【商品紹介】\n画像の2～5枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤと部品と工具です。"
 def itm4():
@@ -71,7 +71,7 @@ def itm4():
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
    inputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープセット")
    inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
-   inputElement3.send_keys("600")
+   inputElement3.send_keys("550")
    global exp1a
    exp1a = "【商品紹介】\n画像の2～3枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
 def itm5():
@@ -79,7 +79,7 @@ def itm5():
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
    inputElement1.send_keys("ダイソン掃除機 タイヤ5個（リピーター様専用）")
    inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
-   inputElement3.send_keys("500")
+   inputElement3.send_keys("450")
    global exp1a
    exp1a = "【商品紹介】\n画像の2枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
 def itm6():
@@ -99,7 +99,7 @@ def itm7():
    global exp1a
    exp1a = "【商品紹介】\n画像の2枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
 def itm8():
-   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/torx/torxdriver.jpeg")
+   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/torx/torxside.jpg \n /Users/masa/Pictures/torx/torxsize.JPG")
    inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
    inputElement1.send_keys("トルクスドライバー3本セット（T10 & T8 & T6）")
    inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
@@ -107,6 +107,30 @@ def itm8():
    global exp1a
    exp1a = "トルクスドライバー3本セット（T10 & T8 & T6）\
    \n\n ダイソン分解清掃などにお得な3本セットです。"
+def itm9():
+   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/tire4(large)set.JPG \n /Users/masa/Pictures/dyson/tire41mm.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
+   inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
+   inputElement1.send_keys("ダイソン掃除機 タイヤ4個(大)+テフロンテープセット")
+   inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
+   inputElement3.send_keys("800")
+   global exp1a
+   exp1a = "【商品紹介】\n画像の2～3枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
+def itm10():
+   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/dyson/tire2(large)set.JPG \n /Users/masa/Pictures/dyson/tire21mm.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
+   inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
+   inputElement1.send_keys("ダイソン掃除機 タイヤ2個(大)+テフロンテープセット")
+   inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
+   inputElement3.send_keys("650")
+   global exp1a
+   exp1a = "【商品紹介】\n画像の2～3枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
+def itm11():
+   driver.find_element_by_xpath("//input[@type='file']").send_keys("/Users/masa/Pictures/torx/torxset(large).JPG \n /Users/masa/Pictures/dyson/tire41mm.jpg \n /Users/masa/Pictures/dyson/tape.jpeg \n /Users/masa/Pictures/torx/torxdriver.jpeg \n /Users/masa/Pictures/torx/torxside.jpg \n /Users/masa/Pictures/torx/torxsize.JPG \n /Users/masa/Pictures/dyson/morterhead.jpeg \n /Users/masa/Pictures/dyson/morterheadback.jpg")
+   inputElement1 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
+   inputElement1.send_keys("ダイソン掃除機 タイヤ4個(大)+テフロンテープ+トルクスドライバー3本セット")
+   inputElement3 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[2].find_element_by_css_selector("input")
+   inputElement3.send_keys("880")
+   global exp1a
+   exp1a = "【商品紹介】\n画像の2～4枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
 def sct(cateElement,indexNum):
    select = Select(cateElement)
    select.select_by_index(indexNum)
@@ -128,18 +152,25 @@ def com_to_dys(exp1, mc):
 def exp1():
    inputElement4 = driver.find_elements_by_class_name("style_inputarea__1mtsA")[0].find_element_by_css_selector("input")
    inputElement1 = driver.find_elements_by_class_name("style_body__1OP1S")[2].find_element_by_css_selector("textarea")
-   if "ダイソン" in inputElement4.get_attribute("value"):
-      inputElement1.send_keys(exp1a + exp0a)
+   if "ダイソン" and "大" in inputElement4.get_attribute("value"):
+      inputElement1.send_keys(exp1a + exp3a + exp0a)
+   elif "ダイソン" in inputElement4.get_attribute("value"):
+      inputElement1.send_keys(exp1a + exp2a + exp0a)
    else:
       inputElement1.send_keys(exp1a)
 exp0a = "\
    \nタイヤが劣化すると約１年ほどでフローリングや畳が傷つくことがあります。そのため、定期的に交換する必要があります。\
    \n\n【交換方法】\n交換方法などブログで詳しく紹介していますので、必ず購入前にご確認ください。\nブラウザでURLを入力すると検索できます。(URL：fuku-channnel.com)\nブログが検索できたら、サイト内検索で「ダイソン」と入力下さい。\
-   \n\n【対象機種】\n実績機種は、DC35, DC48, DC59, DC62, V6です。\nその他の機種でも適合する可能性があります。(その他の機種でタイヤ交換をご検討されている方は次の保証内容をご確認ください。)\
    \n\n【保証内容】\n対象機種以外で交換をご検討されている場合、下記2点をご対応いただくことで保証が適応されることがあります。(対象機種は保証が適用されます)\n1. コメントにてご利用の機種をご連絡ください。\n2. ヘッドの裏の写真(タイヤ部分がわかる写真)を出品下さい。(価格は100,000としてください。)\nこちらで取り付けできると判断した場合のみ、保証が適応されます。保証が適応された場合、万が一取り付けできなかったら返金いたしますので、その旨ご連絡ください。\
-   \n\n【交換頻度】\n１年以内の交換をおすすめしています。\n【タイヤのサイズ】\n外径: 10 mm\n内径: 3 mm\n幅: 4.5 mm (予備タイヤは3.5 mm)\nシャフトにシールを巻くことを前提にしています。詳しくは上記ブログ（タイヤの取り付け方）をご覧下さい。\
+   \n\n【交換頻度】\n１年以内の交換をおすすめしています。\
    \n\n【現状のメーカー修理】\nメーカーで修理依頼すると、購入から2年以上経過すると最低5000円の工賃が発生します。\
    \n\n【最後に】\nタイヤは簡単に交換できるので、DIYで行うことをおすすめしています。(機種によって右後輪の取り外しが困難な場合があります)\nメーカーから部品だけの購入が不可と言われたため、自分で作成したものを出品しています。\n最近、ご購入者様からお褒めの言葉を多く頂いております。モチベーションの向上に繋がりますので、評価の方にもコメントいただけたら幸いです。"
+exp2a = "\
+   \n\n【対象機種】\n実績機種は、DC35, DC48, DC59, DC62, V6です。\nその他の機種でも適合する可能性があります。(その他の機種でタイヤ交換をご検討されている方は次の保証内容をご確認ください。)\
+   \n\n【タイヤのサイズ】\n外径: 10 mm\n内径: 3 mm\n幅: 4.5 mm (予備タイヤは3.5 mm)\nシャフトにシールを巻くことを前提にしています。詳しくは上記ブログ（タイヤの取り付け方）をご覧下さい。"
+exp3a = "\
+   \n\n【対象機種】\n実績機種は、DC48, DC63, CY25ダイレクトドライブです。\nその他の機種でも適合する可能性があります。(その他の機種でタイヤ交換をご検討されている方は次の保証内容をご確認ください。)\
+   \n\n【タイヤのサイズ】\n外径: 10 mm\n内径: 3 mm\n幅: 10 mm \nシャフトにシールを巻くことを前提にしています。詳しくは上記ブログ（タイヤの取り付け方）をご覧下さい。"
 # メルカリ共通  mc: 1-3.商品の状態, 4-6.配送料の負担, 7-9.配送の方法, 10-12.配送元の地域, 13-15.発送までの日数
 def mc():
    cateElement = driver.find_element_by_css_selector("select[name=itemCondition")
@@ -179,7 +210,7 @@ try:
    driver.get("https://www.mercari.com/jp/mypage/listings/listing/") # メルカリにアクセス
    sleep(1)
    time = dt.now()
-   worksheet.update('D5:D12', [[str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)]])
+   worksheet.update('D5:D15', [[str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)], [str(time)]])
    dictm = {}
    dictcomm = {}
    urlitems = driver.find_elements_by_class_name("mypage-item-link")
@@ -189,7 +220,7 @@ try:
       com = urlitem.find_elements_by_class_name("listing-item-count")[1]
       dictm[item.text]=url
       dictcomm[item.text]=com.text
-   for i in range(5,13):
+   for i in range(5,16):
       if dt.strptime(worksheet.cell(i,9).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,10).value, '%Y/%m/%d %H:%M:%S'):
          del_item = worksheet.cell(i, 8).value
          sleep(1)
@@ -288,6 +319,21 @@ try:
       com_to_dys(exp1, mc)
       exh()
       worksheet.update_cell(10, 9, str(time))
+   if not "ダイソン掃除機 タイヤ4個(大)+テフロンテープセット" in lists:
+      itm9()
+      com_to_dys(exp1, mc)
+      exh()
+      worksheet.update_cell(13, 9, str(time))
+   if not "ダイソン掃除機 タイヤ2個(大)+テフロンテープセット" in lists:
+      itm10()
+      com_to_dys(exp1, mc)
+      exh()
+      worksheet.update_cell(14, 9, str(time))
+   if not "ダイソン掃除機 タイヤ4個(大)+テフロンテープ+トルクスドライバー3本セット" in lists:
+      itm11()
+      com_to_dys(exp1, mc)
+      exh()
+      worksheet.update_cell(15, 9, str(time))
    print('D-1', dt.now())
 except Exception as e:
    print(e)
@@ -295,9 +341,18 @@ except Exception as e:
 
 try:
    print('rakuma')
-   def rexp1():
+   def rexp1(rinputElement1):
       rinputElement3 = driver.find_elements_by_class_name("form-group")[2].find_element_by_css_selector("textarea")
-      rinputElement3.send_keys(rexp1a + exp0a)
+      print('346', rinputElement1.get_attribute("value"))
+      if "ダイソン" and "大" in rinputElement1.get_attribute("value"):
+         print(348)
+         rinputElement3.send_keys(rexp1a + exp3a + exp0a)
+      elif "ダイソン" in rinputElement1.get_attribute("value"):
+         print(351)
+         rinputElement3.send_keys(rexp1a + exp2a + exp0a)
+      else:
+         print(354)
+         rinputElement3.send_keys(rexp1a)
       # print('rexp1')
    #ダイソン共通  rakumacommon_to_dyson: 
    def rcom_to_dys():
@@ -334,8 +389,8 @@ try:
    driver.get("https://fril.jp/sell")
    sleep(5)
    print('E-1', dt.now())
-   for i in range(5,13):
-      print('i', i)
+   for i in range(5,16):
+      print('i', i, '387')
       if dt.strptime(worksheet.cell(i,3).value, '%Y/%m/%d %H:%M:%S') < dt.strptime(worksheet.cell(i,5).value, '%Y/%m/%d %H:%M:%S'): #出品してから１日以上経過している場合、trueになります。
          del_item = worksheet.cell(i, 2).value #該当のサンプル名を代入
          urlitems = driver.find_elements_by_class_name("information-pane")[0].find_elements_by_class_name("media") #親要素を取得
@@ -357,47 +412,47 @@ try:
                sleep(5)
                break
    print('354')
-   # driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div/ul/li[2]/a").click() #取引中タブを選択
-   # sleep(1)
-   # rprogs = driver.find_elements_by_class_name("tab-pane.fade")[1].find_elements_by_class_name("media")
-   # i = 0
-   # for rprog in rprogs: #取引中の数を取得
-   #    prog = rprog.find_element_by_class_name("media-body")
-   #    i += 1
-   # for i in range(0, i): #受取確認待ちの情報をスプレッドシートに転記
-   #    rprog = driver.find_elements_by_class_name("tab-pane.fade")[1].find_elements_by_class_name("media")[i]
-   #    prog = rprog.find_element_by_class_name("media-body")
-   #    print('prog', prog.text)
-   #    if "受取確認待ち" in prog.text:
-   #       values_list = worksheet2.get_all_values() #worksheetの全てのセルの情報を取得
-   #       url = driver.find_elements_by_class_name("tab-pane.fade")[1].find_elements_by_class_name("media")[i].find_element_by_tag_name("a").get_attribute("href") #進捗状況を取得
-   #       driver.get(url)
-   #       sleep(1)
-   #       ele = driver.find_elements_by_class_name("contents-wrapper")[1]
-   #       if not "取引に問題" in ele.text: #取引に問題があるとrowの数が変わるので除外
-   #          order_id = ele.find_element_by_class_name("large-text")
-   #          try:
-   #             if not worksheet2.find(order_id.text) == "": #D列に同じIDがある場合
-   #                print(373) # ifの後には１行以上必要
-   #          except Exception as e:
-   #             date = ele.find_elements_by_class_name("row")[4].find_element_by_class_name("col.s12")
-   #             name = ele.find_element_by_class_name("item_name")
-   #             price = ele.find_elements_by_class_name("row")[6].find_elements_by_class_name("col.s6.right-align")[2]
-   #             price2 = re.sub("\\D", "", price.text)
-   #             lastrow = len(values_list) + 1
-   #             date2 = re.sub("[^0-9]", "", date.text)
-   #             date3 = datetime.datetime.strptime(date2, '%Y%m%d%H%M')
-   #             date4 = date3.strftime('%Y年%m月%d日%H:%M')
-   #             worksheet2.update_cell(lastrow, 1, date4) #ワークシートに記入する↓
-   #             worksheet2.update_cell(lastrow, 2, name.text)
-   #             worksheet2.update_cell(lastrow, 3, price2)
-   #             worksheet2.update_cell(lastrow, 4, order_id.text)
-   #             worksheet2.update_cell(lastrow, 5, 'rak_m')
-   #    driver.get("https://fril.jp/sell") #取引中ページに移動する
-   #    sleep(3)
-   #    driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div/ul/li[2]/a").click() #取引中タブを選択
-   #    sleep(1)
-   # print('I-1', dt.now())
+      # driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div/ul/li[2]/a").click() #取引中タブを選択
+      # sleep(1)
+      # rprogs = driver.find_elements_by_class_name("tab-pane.fade")[1].find_elements_by_class_name("media")
+      # i = 0
+      # for rprog in rprogs: #取引中の数を取得
+      #    prog = rprog.find_element_by_class_name("media-body")
+      #    i += 1
+      # for i in range(0, i): #受取確認待ちの情報をスプレッドシートに転記
+      #    rprog = driver.find_elements_by_class_name("tab-pane.fade")[1].find_elements_by_class_name("media")[i]
+      #    prog = rprog.find_element_by_class_name("media-body")
+      #    print('prog', prog.text)
+      #    if "受取確認待ち" in prog.text:
+      #       values_list = worksheet2.get_all_values() #worksheetの全てのセルの情報を取得
+      #       url = driver.find_elements_by_class_name("tab-pane.fade")[1].find_elements_by_class_name("media")[i].find_element_by_tag_name("a").get_attribute("href") #進捗状況を取得
+      #       driver.get(url)
+      #       sleep(1)
+      #       ele = driver.find_elements_by_class_name("contents-wrapper")[1]
+      #       if not "取引に問題" in ele.text: #取引に問題があるとrowの数が変わるので除外
+      #          order_id = ele.find_element_by_class_name("large-text")
+      #          try:
+      #             if not worksheet2.find(order_id.text) == "": #D列に同じIDがある場合
+      #                print(373) # ifの後には１行以上必要
+      #          except Exception as e:
+      #             date = ele.find_elements_by_class_name("row")[4].find_element_by_class_name("col.s12")
+      #             name = ele.find_element_by_class_name("item_name")
+      #             price = ele.find_elements_by_class_name("row")[6].find_elements_by_class_name("col.s6.right-align")[2]
+      #             price2 = re.sub("\\D", "", price.text)
+      #             lastrow = len(values_list) + 1
+      #             date2 = re.sub("[^0-9]", "", date.text)
+      #             date3 = datetime.datetime.strptime(date2, '%Y%m%d%H%M')
+      #             date4 = date3.strftime('%Y年%m月%d日%H:%M')
+      #             worksheet2.update_cell(lastrow, 1, date4) #ワークシートに記入する↓
+      #             worksheet2.update_cell(lastrow, 2, name.text)
+      #             worksheet2.update_cell(lastrow, 3, price2)
+      #             worksheet2.update_cell(lastrow, 4, order_id.text)
+      #             worksheet2.update_cell(lastrow, 5, 'rak_m')
+      #    driver.get("https://fril.jp/sell") #取引中ページに移動する
+      #    sleep(3)
+      #    driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div/ul/li[2]/a").click() #取引中タブを選択
+      #    sleep(1)
+      # print('I-1', dt.now())
    ritmlists = driver.find_elements_by_class_name("media-heading")
    print('J-1', dt.now())
    rlists=[]
@@ -414,10 +469,10 @@ try:
       rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
       rinputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープ+トルクスドライバー3本セット")
       rexp1a = "【商品紹介】\n画像の2～4枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤと工具です。"
-      rexp1()
+      rexp1(rinputElement1)
       rcom_to_dys()
       rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
-      rinputElement8.send_keys("650")
+      rinputElement8.send_keys("620")
       rclick()
       worksheet.update_cell(5, 3, str(time))
    # print('J-3', dt.now())
@@ -425,29 +480,29 @@ try:
       driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/shaftset.JPG")
       driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire5.jpg")
       driver.find_elements_by_xpath("//input[@type='file']")[2].send_keys("/Users/masa/Pictures/dyson/tape.jpeg")
-      driver.find_elements_by_xpath("//input[@type='file']")[3].send_keys("/Users/masa/Pictures/dyson/shaft.jpeg")
+      driver.find_elements_by_xpath("//input[@type='file']")[3].send_keys("/Users/masa/Pictures/dyson/shaft.png")
       rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
       rinputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本セット")
       rexp1a = "【商品紹介】\n画像の2～4枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤと部品です。"
-      rexp1()
+      rexp1(rinputElement1)
       rcom_to_dys()
       rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
-      rinputElement8.send_keys("650")
+      rinputElement8.send_keys("620")
       rclick()
       worksheet.update_cell(6, 3, str(time))
    # print('J-4', dt.now())
    if not "ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本+トルクスドライバー3本" in rlists:
       driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/4set.JPG")
       driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire5set.JPG")
-      driver.find_elements_by_xpath("//input[@type='file']")[2].send_keys("/Users/masa/Pictures/dyson/shaft.jpeg")
+      driver.find_elements_by_xpath("//input[@type='file']")[2].send_keys("/Users/masa/Pictures/dyson/shaft.png")
       driver.find_elements_by_xpath("//input[@type='file']")[3].send_keys("/Users/masa/Pictures/torx/torxdriver.jpeg")
       rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
       rinputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープ+シャフト4本+トルクスドライバー3本")
       rexp1a = "【商品紹介】\n画像の2～4枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤと部品と工具です。"
-      rexp1()
+      rexp1(rinputElement1)
       rcom_to_dys()
       rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
-      rinputElement8.send_keys("830")
+      rinputElement8.send_keys("720")
       rclick()
       worksheet.update_cell(7, 3, str(time))
    print('J-5', dt.now())
@@ -459,10 +514,10 @@ try:
       rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
       rinputElement1.send_keys("ダイソン掃除機 タイヤ5個+テフロンテープセット")
       rexp1a = "【商品紹介】\n画像の2～3枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
-      rexp1()
+      rexp1(rinputElement1)
       rcom_to_dys()
       rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
-      rinputElement8.send_keys("580")
+      rinputElement8.send_keys("540")
       rclick()
       worksheet.update_cell(8, 3, str(time))
    print('J-6', dt.now())
@@ -474,10 +529,10 @@ try:
       rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
       rinputElement1.send_keys("ダイソン掃除機 タイヤ2個+テフロンテープセット")
       rexp1a = "【商品紹介】\n画像の2～3枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
-      rexp1()
+      rexp1(rinputElement1)
       rcom_to_dys()
       rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
-      rinputElement8.send_keys("380")
+      rinputElement8.send_keys("390")
       rclick()
       worksheet.update_cell(9, 3, str(time))
    if not "トルクスドライバー3本セット（T10 & T8 & T6）" in rlists:
@@ -488,10 +543,56 @@ try:
       rinputElement3.send_keys("トルクスドライバー3本セットです。（T10 & T8 & T6) ダイソン分解清掃などにお得な3本セットです。")
       rcom_to_dys()
       rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
-      rinputElement8.send_keys("390")
+      rinputElement8.send_keys("420")
       rclick()
       worksheet.update_cell(10, 3, str(time))
    print('try-last1', dt.now())
+   if not "ダイソン掃除機 タイヤ4個(大)+テフロンテープセット" in rlists:
+      driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/tire4(large)set.JPG")
+      driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire41mm.jpg")
+      driver.find_elements_by_xpath("//input[@type='file']")[2].send_keys("/Users/masa/Pictures/dyson/tape.jpeg")
+      driver.find_elements_by_xpath("//input[@type='file']")[3].send_keys("/Users/masa/Pictures/dyson/morterheadback.jpg")
+      rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
+      rinputElement1.send_keys("ダイソン掃除機 タイヤ4個(大)+テフロンテープセット")
+      print('557', rinputElement1.get_attribute("value"))
+      rexp1a = "【商品紹介】\n画像の2～3枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
+      rexp1(rinputElement1)
+      rcom_to_dys()
+      rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
+      rinputElement8.send_keys("790")
+      rclick()
+      worksheet.update_cell(13, 3, str(time))
+   if not "ダイソン掃除機 タイヤ2個(大)+テフロンテープセット" in rlists:
+      driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/tire2(large)set.JPG")
+      driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire21mm.jpg")
+      driver.find_elements_by_xpath("//input[@type='file']")[2].send_keys("/Users/masa/Pictures/dyson/tape.jpeg")
+      driver.find_elements_by_xpath("//input[@type='file']")[3].send_keys("/Users/masa/Pictures/dyson/morterheadback.jpg")
+      rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
+      rinputElement1.send_keys("ダイソン掃除機 タイヤ2個(大)+テフロンテープセット")
+      print('572', rinputElement1.get_attribute("value"))
+      rexp1a = "【商品紹介】\n画像の2～3枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
+      rexp1(rinputElement1)
+      rcom_to_dys()
+      rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
+      rinputElement8.send_keys("640")
+      rclick()
+      worksheet.update_cell(14, 3, str(time))
+   if not "ダイソン掃除機 タイヤ4個(大)+テフロンテープ+トルクスドライバー3本セット" in rlists:
+      driver.find_elements_by_xpath("//input[@type='file']")[0].send_keys("/Users/masa/Pictures/dyson/tire4(large)set.JPG")
+      driver.find_elements_by_xpath("//input[@type='file']")[1].send_keys("/Users/masa/Pictures/dyson/tire41mm.jpg")
+      driver.find_elements_by_xpath("//input[@type='file']")[2].send_keys("/Users/masa/Pictures/dyson/tape.jpeg")
+      driver.find_elements_by_xpath("//input[@type='file']")[3].send_keys("/Users/masa/Pictures/torx/torxdriver.jpeg")
+      rinputElement1 = driver.find_elements_by_class_name("form-group")[1].find_element_by_css_selector("input")
+      rinputElement1.send_keys("ダイソン掃除機 タイヤ4個(大)+テフロンテープ+トルクスドライバー3本セット")
+      print('587', rinputElement1.get_attribute("value"))
+      rexp1a = "【商品紹介】\n画像の2～4枚目が商品になります。ダイソンモーターヘッドの裏側に付いているタイヤです。"
+      rexp1(rinputElement1)
+      rcom_to_dys()
+      rinputElement8 = driver.find_elements_by_class_name("form-group")[11].find_element_by_css_selector("input")
+      rinputElement8.send_keys("870")
+      rclick()
+      worksheet.update_cell(15, 3, str(time))
+   print('J-6', dt.now())
 except Exception as e:
    print(e)
    driver.quit()
