@@ -17,8 +17,9 @@ worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from time import sleep
-#import chromedriver_binary
 import webbrowser
+from webdriver_manager.chrome import ChromeDriverManager
+
 from datetime import datetime as dt
 import datetime
 import requests
@@ -48,28 +49,28 @@ def mercon_values():
       print(profit[6].text)
       worksheet.update_cell(lastrow, 2, "M " + mitm[0].text)
       print(mitm[0].text)
+      if "大" in mitm[0].text:
+         worksheet.update_cell(lastrow, 3, 1)
+      else:
+         worksheet.update_cell(lastrow, 3, 0)
       i += 1
       sleep(1)
-
-# def json_serial(obj):
-#    if isinstance(obj, (dt)):
-#       return obj.isoformat()
-#    raise TypeError ("Type %s not serializable" % type(obj))
-
 try:
+   time = datetime.datetime.strftime(dt.now(), '%m月%d日%H時%M分')
+   worksheet.update_cell(1, 1, time)
    print('account_1', dt.now())
    options = webdriver.ChromeOptions()
    options.add_argument(
-      # '--user-data-dir={chrom_dir_path}'.format(chrom_dir_path = '/Users/masa/Library/Application Support/Google/Chrome/Profile 3'))
       '--user-data-dir={chrom_dir_path}'.format(chrom_dir_path = '/Users/masa/Library/Application Support/Google/Chrome/Profile 4'))
    options.add_argument('--headless')
    options.add_argument('--no-sandbox')
    options.add_argument('--disable-gpu')
-   driver = webdriver.Chrome(options=options, executable_path='/Users/masa/bin/chromedriver')
+   driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
    # driver.minimize_window()
    sleep(1)
    print('mercari')
    driver.get("https://www.mercari.com/jp/mypage/listings/in_progress/") # メルカリにアクセス
+
    # res = requests.get("https://www.mercari.com/jp/mypage/listings/in_progress/")
    # print(res.text)
    elms = driver.find_elements_by_class_name("mypage-item-link") #要素のクラス名を指定して取引ページの発送待ちのみURLを取得
@@ -114,6 +115,10 @@ try:
          print(yname[2].text + '\n' + yname[3].text + '\n' + yname[1].text + " 様")
          worksheet.update_cell(lastrow, 2, "Y " + yitem[0].text)
          print(yitem[0].text)
+         if "大" in yitem[0].text:
+            worksheet.update_cell(lastrow, 3, 1)
+         else:
+            worksheet.update_cell(lastrow, 3, 0)
          j += 1
       i += 1
       sleep(1)
@@ -134,7 +139,6 @@ try:
    i = 0
    print('r-1')
    values_list = worksheet.get_all_values() #worksheetの全てのセルの情報を取得
-   #con_values = ''.join(sum(values_list,[]))
    for rinf in lists:
       driver.get(lists[i])
       lastrow = len(values_list) + 1 + i #空白の行を取得する（取得を開始する行）
@@ -145,6 +149,10 @@ try:
       print(profit[7].text)
       worksheet.update_cell(lastrow, 2, "R " + ritm[0].text)
       print(ritm[0].text)
+      if "大" in ritm[0].text:
+         worksheet.update_cell(lastrow, 3, 1)
+      else:
+         worksheet.update_cell(lastrow, 3, 0)
       i += 1
       sleep(1)
    sleep(1)
@@ -157,7 +165,6 @@ try:
    options.add_argument('--no-sandbox')
    options.add_argument('--disable-gpu')
    driver = webdriver.Chrome(options=options, executable_path='/Users/masa/bin/chromedriver')
-   # driver.minimize_window()
    print('mercari')
    driver.get('https://www.mercari.com/jp/mypage/listings/in_progress/')
    elms = driver.find_elements_by_class_name("mypage-item-link") # 取引ページの発送待ちのみURLを取得
@@ -168,8 +175,6 @@ try:
    mercon_values()
    sleep(1)
    driver.quit() #ウインドウを閉じる
-   time = datetime.datetime.strftime(dt.now(), '%m月%d日%H時%M分')
-   worksheet.update_cell(1, 5, time)
    print('last', dt.now())
 except Exception as e:
    print(e)
